@@ -1,4 +1,13 @@
-﻿<div class="row justify-content-center mt-5">
+﻿@{
+    ViewBag.Tile = "login";
+}
+@if(TempData["Status"]!= null){
+    <div class= "alert alert-success">
+        @TempData ["Status"];
+    </div>
+
+}
+<div class="row justify-content-center mt-5">
     <div class="col-md-6">
         <form asp-action="Login" method="post" class="border p-4">
             <div class="form-group">
@@ -10,7 +19,7 @@
                 <input type="password" id="Password" name="Password" class="form-control" required>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
+            <a asp-controller="Account" asp-action="DangKy" class="btn btn-secondary">Đăng Ký</a>
         </form>
     </div>
-</div>
 </div>

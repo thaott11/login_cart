@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DemoGH_OnTap.Models.Account>
+
+@{
+    ViewData["Title"] = "Index";
+    var message = ViewData["message"];
+}
+
+<h1>Index</h1>
+<h2>@message</h2>
+<form asp-controller="Account" asp-action="Index" method="get">
+    <input id="searchInput" placeholder="Looking for" name="name" value="@ViewData["name"]" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="text-end">
+    <a asp-action="Login"  onclick="return confirm('bạn có muốn thoát không')">Out -></a>
+</div>  
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">Sửa</a>
+                    <form asp-action="remove" asp-route-id="@item.Id" method="post"  onclick="return confirm ('bạn có muốn xóa không');">
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                    <a asp-action="deltai" asp-route-id="@item.Id" class="btn btn-secondary">Deltai</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
