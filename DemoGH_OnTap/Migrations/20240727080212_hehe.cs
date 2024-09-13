@@ -63,33 +63,34 @@ namespace DemoGH_OnTap.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    GioHangId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    SanPhamId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    Amount = table.Column<int>(type: "int", nullable: false),
+                    SanPhamID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    GioHangID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_GHCTs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_GHCTs_GioHang_GioHangId",
-                        column: x => x.GioHangId,
+                        name: "FK_GHCTs_GioHang_GioHangID",
+                        column: x => x.GioHangID,
                         principalTable: "GioHang",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_GHCTs_SanPhams_SanPhamId",
-                        column: x => x.SanPhamId,
+                        name: "FK_GHCTs_SanPhams_SanPhamID",
+                        column: x => x.SanPhamID,
                         principalTable: "SanPhams",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_GHCTs_GioHangId",
+                name: "IX_GHCTs_GioHangID",
                 table: "GHCTs",
-                column: "GioHangId");
+                column: "GioHangID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GHCTs_SanPhamId",
+                name: "IX_GHCTs_SanPhamID",
                 table: "GHCTs",
-                column: "SanPhamId");
+                column: "SanPhamID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GioHang_AccountID",

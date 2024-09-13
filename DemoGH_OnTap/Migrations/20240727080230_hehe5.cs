@@ -4,7 +4,7 @@
 
 namespace DemoGH_OnTap.Migrations
 {
-    public partial class db : Migration
+    public partial class hehe5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

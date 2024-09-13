@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoGH_OnTap.Migrations
 {
     [DbContext(typeof(SD18406CartDbContext))]
-    [Migration("20240723073907_db")]
-    partial class db
+    [Migration("20240727080230_hehe5")]
+    partial class hehe5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,17 +67,20 @@ namespace DemoGH_OnTap.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("GioHangId")
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("GioHangID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("SanPhamId")
+                    b.Property<Guid?>("SanPhamID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GioHangId");
+                    b.HasIndex("GioHangID");
 
-                    b.HasIndex("SanPhamId");
+                    b.HasIndex("SanPhamID");
 
                     b.ToTable("GHCTs");
                 });
@@ -131,11 +134,11 @@ namespace DemoGH_OnTap.Migrations
                 {
                     b.HasOne("DemoGH_OnTap.Models.GioHang", "GioHang")
                         .WithMany("GHCTs")
-                        .HasForeignKey("GioHangId");
+                        .HasForeignKey("GioHangID");
 
                     b.HasOne("DemoGH_OnTap.Models.SanPham", "SanPham")
                         .WithMany("GHCTs")
-                        .HasForeignKey("SanPhamId");
+                        .HasForeignKey("SanPhamID");
 
                     b.Navigation("GioHang");
 

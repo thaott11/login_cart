@@ -3,7 +3,12 @@
     public class GHCT
     {
         public Guid Id { get; set; }
-        public GioHang? GioHang { get; set; }  ///khi tạo câu lệnh này sẽ tự động tạo khóa ngoại => đại diện khóa ngoại luon
+
+        public int Amount {  get; set; } 
+        public Guid? SanPhamID { get; set; }
+        public Guid? GioHangID { get; set; }
+
+        public GioHang? GioHang { get; set; }  
         public SanPham? SanPham { get; set; }
     }
 }

@@ -6,7 +6,7 @@
 }
 
 <h1>Index</h1>
-<h2>@message</h2>
+<h3>@message</h3>
 <form asp-controller="Account" asp-action="Index" method="get">
     <input id="searchInput" placeholder="Looking for" name="name" value="@ViewData["name"]" />
     <button type="submit" class="btn btn-primary">Search</button>
@@ -16,13 +16,13 @@
     <a asp-action="Create">Create New</a>
 </p>
 <div class="text-end">
-    <a asp-action="Login"  onclick="return confirm('bạn có muốn thoát không')">Out -></a>
-</div>  
+    <a asp-action="Login" onclick="return confirm('bạn có muốn thoát không')">Out -></a>
+</div>
 
 <table class="table">
     <thead>
         <tr>
-            
+
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -48,7 +48,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -69,7 +69,7 @@
                 </td>
                 <td>
                     <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">Sửa</a>
-                    <form asp-action="remove" asp-route-id="@item.Id" method="post"  onclick="return confirm ('bạn có muốn xóa không');">
+                    <form asp-action="delete" asp-action="ReTriDeleteData" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có muốn xóa không?');">
                         <button type="submit" class="btn btn-danger">Xóa</button>
                     </form>
                     <a asp-action="deltai" asp-route-id="@item.Id" class="btn btn-secondary">Deltai</a>
